@@ -1,37 +1,49 @@
-# curriculum-databases-projects-template
+# Vet Clinic Database
 
-> This template should be used for database related projects at Microverse.
-> Generate your own repository, update this README and edit all files content while working on projects. You should not be adding any new files unless asked otherwise.
+"Vet Clinic" is an database storing information for animals. A user can store, manipulate, and retrieve animal information in the db.
 
+The present project is part of the Microverse curriculum Module 4 Block 1 Project. The main objective is putting hands on practice to build a database application using postgres with SQL as the query language.
+
+## Built With
+
+- SQL
+- Postgres
+
+## Additional Tools
+
+- Gitflow
 
 ## Getting Started
 
-This repository includes files with plain SQL that can be used to recreate a database:
+To get a local copy of this project:
 
-- Use [schema.sql](./schema.sql) to create all tables.
-- Use [data.sql](./data.sql) to populate tables with sample data.
-- Check [queries.sql](./queries.sql) for examples of queries that can be run on a newly created database. **Important note: this file might include queries that make changes in the database (e.g., remove records). Use them responsibly!**
+Clone this repository or download the Zip folder:
+```
+https://github.com/Carshy/vet-animal.git
+```
+ 
+In the project directory, you can run:
 
+You can cd to respective files then copy and paste the queries in your postgres database
+
+That's it! You can play with it as you wish :smile:
 
 ## Authors
 
-👤 **Author1**
+👤 **Collins Musoko**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [@Github](https://github.com/Carshy)
+- Twitter: [@Twitter](https://twitter.com/CarshyCollins)
+- Linkedin: [Linkedin](https://www.linkedin.com/in/collins-musoko-864881120/)
 
-👤 **Author2**
+## Show your support
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+Give a ⭐️ if you like this project!
 
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
-
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/Carshy/vet-animals/issues).
 
 ## Show your support
 
@@ -39,10 +51,10 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- This project is part of week 1 of module 3 in the Microverse study program.
+- Thanks to the Microverse team for the great curriculum 🙌.
+- Thanks to Code Reviewers for the insightful feedback ⚡.
 
 ## 📝 License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](https://github.com/Carshy/readme-template/blob/master/MIT.md) licensed.
