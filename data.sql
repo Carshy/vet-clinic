@@ -14,21 +14,3 @@ INSERT INTO animals(name, date_of_birth, escape_attempts, neutured, weight_kg) V
 INSERT INTO animals(name, date_of_birth, escape_attempts, neutured, weight_kg) VALUES('Boarmon', DATE '2005-06-7', '7', 'true', '20.4');
 INSERT INTO animals(name, date_of_birth, escape_attempts, neutured, weight_kg) VALUES('Blossom', DATE '1998-10-13', '3', 'true', '17.0');
 INSERT INTO animals(name, date_of_birth, escape_attempts, neutured, weight_kg) VALUES('Ditto', DATE '2022-05-14', '4', 'true', '20.0');
-
-BEGIN;
-UPDATE animals SET species = 'unspecified';
-ROLLBACK;
-
-UPDATE animals SET species = 'digimon' WHERE name LIKE '%mon';
-UPDATE animals SET species = 'pokemon' WHERE species = '';
-
-BEGIN;
-DELETE FROM animals;
-ROLLBACK;
-
-BEGIN;
-DELETE FROM animals WHERE date_of_birth >= 2022-01-01;
-SAVEPOINT SP1;
-UPDATE animals SET weight_kg = weight_kg * -1;
-ROLLBACK TO SP1;
-
