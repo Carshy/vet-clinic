@@ -14,3 +14,33 @@ INSERT INTO animals(name, date_of_birth, escape_attempts, neutured, weight_kg) V
 INSERT INTO animals(name, date_of_birth, escape_attempts, neutured, weight_kg) VALUES('Boarmon', DATE '2005-06-7', '7', 'true', '20.4');
 INSERT INTO animals(name, date_of_birth, escape_attempts, neutured, weight_kg) VALUES('Blossom', DATE '1998-10-13', '3', 'true', '17.0');
 INSERT INTO animals(name, date_of_birth, escape_attempts, neutured, weight_kg) VALUES('Ditto', DATE '2022-05-14', '4', 'true', '20.0');
+
+-- Multiple Tables
+-- Insert the following data into the owners table
+INSERT INTO owners(full_name, age) VALUES('Sam Smith', '34');
+INSERT INTO owners(full_name, age) VALUES('Jennifer Orwell', '19');
+INSERT INTO owners(full_name, age) VALUES('Bob ', '45');
+INSERT INTO owners(full_name, age) VALUES('Melody Pond', '77');
+INSERT INTO owners(full_name, age) VALUES('Dean Winchester', '14');
+INSERT INTO owners(full_name, age) VALUES('Jodie Whittaker', '38');
+
+-- Insert the following data into the species table
+INSERT INTO species(name) VALUES('Pokemon');
+INSERT INTO species(name) VALUES('Digimon');
+
+-- Modify your inserted animals so it includes the species_id value:
+UPDATE animals SET species_id = 2 WHERE name LIKE '%mon';
+-- All other animals are Pokemon
+UPDATE animals SET species_id = 1 WHERE species_id IS NULL;
+
+-- Modify your inserted animals to include owner information (owner_id)
+-- Sam Smith owns Agumon
+UPDATE animals SET owner_id = 1 WHERE name = 'Agumon';
+-- Jennifer Orwell owns Gabumon and Pikachu.
+UPDATE animals SET owner_id = 2 WHERE name IN('Gabumon', 'Pikachu');
+-- Bob owns Devimon and Plantmon.
+UPDATE animals SET owner_id = 3 WHERE name IN('Devimon', 'Plantmon');
+-- Melody Pond owns Charmander, Squirtle, and Blossom.
+UPDATE animals SET owner_id = 4 WHERE name IN('Charmander', 'Squirtle', 'Blossom');
+-- Dean Winchester owns Angemon and Boarmon.
+UPDATE animals SET owner_id = 5 WHERE name IN('Angemon', 'Boarmon');
