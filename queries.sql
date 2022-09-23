@@ -83,7 +83,7 @@ JOIN vets ON vets.vet_id = v.vet_id
 WHERE vets.vet_id = 1 ORDER BY v.visit_date DESC LIMIT 1;
 
 -- How many different animals did Stephanie Mendez see?
-SELECT COUNT(a.animal_name), vets.vet_name 
+SELECT COUNT(a.animal_name), vets.vets_name 
 FROM animals a JOIN visits v ON a.animal_id = v.animal_id 
 JOIN vets ON vets.vet_id = v.vet_id 
 WHERE vets.vets_name = 'Stephanie Mendez' GROUP BY vets.vets_name;
@@ -105,3 +105,32 @@ SELECT COUNT(animals.animal_name), animals.animal_name
 FROM vets JOIN visits ON visits.vet_id = vets.vet_id 
 JOIN animals ON animals.animal_id = visits.animal_id 
 GROUP BY animals.animal_name ORDER BY count DESC LIMIT 1;
+
+-- Who was Maisy Smith's first visit?
+SELECT vets.vets_name, a.animal_name, visits.visit_date 
+FROM vets JOIN visits ON visits.vet_id = vets.vet_id 
+JOIN animals a ON a.animal_id = visits.animal_id 
+WHERE vets.vets_name = 'Maisy Smith' ORDER BY visits.visit_date LIMIT 1;
+
+-- Details for most recent visit: animal information, vet information, and date of visit.
+SELECT a.animal_name AS animal,a.date_of_birth,a.escape_attempts,a.neutured,
+a.weight_kg,species.species_name,vets.vets_name AS vet, vets.age,vets.date_of_graduation,v.visit_date 
+FROM vets JOIN visits v ON v.vet_id = vets.vet_id JOIN animals a ON a.animal_id = v.animal_id 
+JOIN species ON a.species_id = species.species_id ORDER BY v.visit_date DESC LIMIT 1;
+
+-- How many visits were with a vet that did not specialize in that animal's species?
+SELECT animals.animal_name as Animal, species.species_name AS species,
+vets.name AS vet, vet_sp.species_name AS specialized
+FROM vets JOIN visits ON vets.vet_id = visits.vet_id
+JOIN animals ON visits.animal_id = animals.animal_id
+JOIN species ON species.species_id = animals.species_id
+JOIN specializations ON specializations.vet_id = vets.vet_id
+JOIN species vet_sp ON vet_sp.id = specializations.species_id
+WHERE species.id != vet_sp.id;
+
+-- What specialty should Maisy Smith consider getting? Look for the species she gets the most.
+SELECT species.species_name AS species
+FROM vets JOIN visits ON vets.vet_id = visits.vet_id
+JOIN animals ON visits.animal_id = animals.animal_id
+JOIN species ON species.species_id = animals.species_id
+WHERE vets.vets_name = 'Maisy Smith' GROUP BY species LIMIT 1;
