@@ -72,3 +72,36 @@ WHERE full_name = 'Dean Winchester' and escape_attempts = 0;
 SELECT owners.full_name , COUNT(animal_name) AS total_animals 
 FROM owners JOIN animals ON animals.owner_id=owners.owner_id 
 GROUP BY owners.full_name ORDER BY total_animals DESC LIMIT 1;
+
+-- JOIN TABLE VISITS
+-- Write queries to answer the following
+
+-- Who was the last animal seen by William Tatcher?
+SELECT animal_name, vets.vets_name, v.visit_date 
+FROM animals a JOIN visits v ON a.animal_id = v.animal_id 
+JOIN vets ON vets.vet_id = v.vet_id 
+WHERE vets.vet_id = 1 ORDER BY v.visit_date DESC LIMIT 1;
+
+-- How many different animals did Stephanie Mendez see?
+SELECT COUNT(a.animal_name), vets.vet_name 
+FROM animals a JOIN visits v ON a.animal_id = v.animal_id 
+JOIN vets ON vets.vet_id = v.vet_id 
+WHERE vets.vets_name = 'Stephanie Mendez' GROUP BY vets.vets_name;
+
+-- List all vets and their specialties, including vets with no specialties.
+SELECT species.species_name, vets.vets_name 
+FROM vets FULL JOIN specializations ON specializations.vet_id = vets.vet_id 
+FULL JOIN species ON species.species_id = specializations.species_id;
+
+-- List all animals that visited Stephanie Mendez between April 1st and August 30th, 2020.
+SELECT animals.animal_name, vets.vets_name, visits.visit_date 
+FROM vets FULL JOIN visits ON visits.vet_id = vets.vet_id 
+FULL JOIN animals ON animals.animal_id = visits.animal_id 
+WHERE vets.vets_name = 'Stephanie Mendez' AND visits.visit_date 
+BETWEEN '2020-04-01' AND '2020-08-30';
+
+-- What animal has the most visits to vets?
+SELECT COUNT(animals.animal_name), animals.animal_name
+FROM vets JOIN visits ON visits.vet_id = vets.vet_id 
+JOIN animals ON animals.animal_id = visits.animal_id 
+GROUP BY animals.animal_name ORDER BY count DESC LIMIT 1;
